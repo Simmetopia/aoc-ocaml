@@ -17,12 +17,9 @@ module M = struct
 
   let line_to_tuple str =
     let a = String.split_on_chars str ~on:[' '] in
-    (char_to_rps (List.nth_exn a 1).[0], char_to_rps (List.nth_exn a 0).[0])
-
-  let rps_to_string = function
-    | Rock -> "Rock"
-    | Paper -> "Paper"
-    | Scissor -> "Scissor"
+    match a with
+    | [a; b] -> (char_to_rps a.[0], char_to_rps b.[0])
+    | _ -> failwith "Invalid input"
 
   let rps_to_points = function Rock -> 1 | Paper -> 2 | Scissor -> 3
 
@@ -30,17 +27,6 @@ module M = struct
     | Win a -> 6 + rps_to_points a
     | Lose a -> rps_to_points a
     | Draw a -> 3 + rps_to_points a
-
-  (* let outcome_to_string = function *)
-  (*   | Win a -> *)
-  (*       "Win " ^ rps_to_string a ^ " " ^ Int.to_string *)
-  (*       @@ outcome_to_points (Win a) *)
-  (*   | Lose a -> *)
-  (*       "Lose " ^ rps_to_string a ^ " " ^ Int.to_string *)
-  (*       @@ outcome_to_points (Lose a) *)
-  (*   | Draw a -> *)
-  (*       "Draw " ^ rps_to_string a ^ " " ^ Int.to_string *)
-  (*       @@ outcome_to_points (Draw a) *)
 
   let tuple_to_outcome (a, b) =
     match (a, b) with
@@ -67,6 +53,7 @@ module M = struct
   let line_to_points str =
     let a = String.split_on_chars str ~on:[' '] in
     (* X=lose, Y=draw Z=win *)
+    (* A=rock, B=paper, C=scissor *)
     match list_to_tuple a with
     | 'A', 'X' -> 3
     | 'A', 'Y' -> 4
