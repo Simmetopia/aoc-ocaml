@@ -41,10 +41,11 @@ module M = struct
 
   let part1 inputs =
     let inputs =
-      inputs |> List.map ~f:line_to_tuple |> List.map ~f:tuple_to_outcome
+      inputs
+      |> List.map ~f:(fun x ->
+             line_to_tuple x |> tuple_to_outcome |> outcome_to_points )
     in
-    let points = List.map ~f:outcome_to_points inputs in
-    let tp = List.fold_left points ~init:0 ~f:( + ) in
+    let tp = List.fold_left inputs ~init:0 ~f:( + ) in
     Stdio.printf "%d\n" tp
 
   let list_to_tuple (l : string list) =

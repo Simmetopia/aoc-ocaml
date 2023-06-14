@@ -3,7 +3,7 @@ open Base
 
 module M = struct
   (* Type to parse the input into *)
-  type t = int list list
+  type t = int list list 
 
   (* Parse the input to type t, invoked for both parts *)
   let parse inputs =

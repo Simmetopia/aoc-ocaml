@@ -16,6 +16,8 @@ module M = struct
     | 'A' .. 'Z' -> Char.to_int c - Char.to_int 'A' + 27
     | _ -> failwith "Invalid char"
 
+  let intersections = List.reduce ~f:Set.inter
+
   let part1_line (a, b) =
     let a = Set.of_list (module Char) a in
     let b = Set.of_list (module Char) b in
@@ -26,12 +28,9 @@ module M = struct
 
   let part2_line (list : string list) =
     match List.map ~f:str_to_set list with
-    | [a; b; c] ->
-        let intersection = Set.inter a (Set.inter c b) in
+    | a ->
+        let intersection = intersections a |> Option.value_exn in
         Set.choose_exn intersection |> char_to_points
-    | _ ->
-        failwith
-          "Invalid input: the list should contain exactly three elements"
 
   let part1 inputs =
     let res =
