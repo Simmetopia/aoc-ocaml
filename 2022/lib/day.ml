@@ -1,5 +1,5 @@
 module type S = sig
-  val run : ?only_part1:bool -> ?only_part2:bool -> string -> unit
+  val run : string -> unit
 end
 
 module type Impl = sig
@@ -13,9 +13,8 @@ module type Impl = sig
 end
 
 module Make (Impl : Impl) : S = struct
-  let run ?(only_part1 = false) ?(only_part2 = false) inputs =
-    let parsed = Impl.parse inputs in
-    let () = if not only_part2 then Impl.part1 parsed in
-    let () = if not only_part1 then Impl.part2 parsed in
+  let run inputs =
+    Impl.parse inputs |> Impl.part1 ;
+    Impl.parse inputs |> Impl.part2 ;
     ()
 end
