@@ -1,0 +1,10 @@
+{application,aoc_elixir_2023,
+             [{compile_env,[{elixir,[dbg_callback],
+                                    {ok,{'Elixir.Macro',dbg,[]}}}]},
+              {optional_applications,[]},
+              {applications,[kernel,stdlib,elixir,logger,httpoison]},
+              {description,"aoc_elixir_2023"},
+              {modules,['Elixir.AdventOfCode','Elixir.AdventOfCode.Behaviour',
+                        'Elixir.AocElixir2023','Elixir.Day2','Elixir.Day3']},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.

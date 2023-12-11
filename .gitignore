@@ -1,40 +1,26 @@
+# The directory Mix will write compiled artifacts to.
+/_build/
 
-# Created by https://www.toptal.com/developers/gitignore/api/ocaml
-# Edit at https://www.toptal.com/developers/gitignore?templates=ocaml
+# If you run "mix test --cover", coverage assets end up here.
+/cover/
 
-### OCaml ###
-*.annot
-*.cmo
-*.cma
-*.cmi
-*.a
-*.o
-*.cmx
-*.cmxs
-*.cmxa
+# The directory Mix downloads your dependencies sources to.
+/deps/
 
-# ocamlbuild working directory
-_build/
+# Where third-party dependencies like ExDoc output generated docs.
+/doc/
 
-# ocamlbuild targets
-*.byte
-*.native
+# Ignore .fetch files in case you like to edit your project deps locally.
+/.fetch
 
-# oasis generated files
-setup.data
-setup.log
+# If the VM crashes, it generates a dump, let's ignore it too.
+erl_crash.dump
 
-# Merlin configuring file for Vim and Emacs
-.merlin
+# Also ignore archive artifacts (built via "mix archive.build").
+*.ez
 
-# Dune generated files
-*.install
+# Ignore package tarball (built via "mix hex.build").
+aoc_elixir_2023-*.tar
 
-# Local OPAM switch
-_opam/
-
-# End of https://www.toptal.com/developers/gitignore/api/ocaml
-
-inputs
-
-.session
+# Temporary files, for example, from tests.
+/tmp/
