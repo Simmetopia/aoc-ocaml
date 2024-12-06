@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run AoC Program",
+            "type": "shell",
+            "command": "dune exec aoc ${input}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "input",
+            "description": "Input for AoC program:",
+            "type": "promptString"
+        }
+    ]
+}
+
